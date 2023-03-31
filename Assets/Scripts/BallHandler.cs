@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.EnhancedTouch;
+using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
 public class BallHandler : MonoBehaviour
 {
@@ -63,7 +65,7 @@ public class BallHandler : MonoBehaviour
     //
     // Input variables
     //
-
+    private Vector2 _allTouchesPosition = Vector2.zero;
     private Vector2 _touchPosition = Vector2.zero;
     private bool _isDragging = false;
 
@@ -79,9 +81,11 @@ public class BallHandler : MonoBehaviour
 
     private void Update()
     {
+        // return if no current ball
         if (!_currentBall) return;
-        // checks for touch
-        if (!Touchscreen.current.primaryTouch.press.isPressed)
+
+        // checks for touches
+        if (Touch.activeTouches.Count == 0)
         {
             if (_isDragging)
             {
@@ -103,6 +107,18 @@ public class BallHandler : MonoBehaviour
 
     }
 
+    private void OnEnable()
+    {
+        // Start tracking multiple touch inputs
+        EnhancedTouchSupport.Enable();
+    }
+
+    private void OnDisable()
+    {
+        // stop tracking multiple touch inputs
+        EnhancedTouchSupport.Disable();
+    }
+
     /// <summary>
     /// Will take your view position and convert it to world position (- Camera Z position)
     /// </summary>
@@ -118,8 +134,21 @@ public class BallHandler : MonoBehaviour
     /// </summary>
     private void GetInputs()
     {
+        // disable phyics on ball
         _currentBall.IsKinematic = true;
-        _touchPosition = Touchscreen.current.primaryTouch.position.ReadValue();
+        
+        // Calculate final touch position
+        _allTouchesPosition = Vector2.zero;
+        foreach(Touch touch in Touch.activeTouches)
+        {
+            _allTouchesPosition += touch.screenPosition;
+        }
+        // insure there are no divided by zero and useless calculations
+        if (Touch.activeTouches.Count != 1 && Touch.activeTouches.Count != 0)
+            _allTouchesPosition /=Touch.activeTouches.Count;
+
+        // Set final touch position
+        _touchPosition = _allTouchesPosition;  //Touchscreen.current.primaryTouch.position.ReadValue();
     }
 
     /// <summary>
