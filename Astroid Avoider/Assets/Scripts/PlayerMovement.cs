@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody rb;
     private Camera mainCamera;
+    
 
     private Vector3 movementDirection;
 
