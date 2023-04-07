@@ -28,6 +28,10 @@ public class BallHandler : MonoBehaviour
 		}
 	}
 
+
+	/// <summary>
+	/// Calculate the distance between the current ball and the launcher after the player has released the drag
+	/// </summary>
 	private void CheckLaunchedBallDistanceToLauncher()
 	{
 		if (Vector3.Distance(currentSpringJoint2D.gameObject.transform.position, launcherGameObject.transform.position) < 1)
@@ -38,6 +42,9 @@ public class BallHandler : MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// Check if the player is touching the screen and either drag the current ball or launch it
+	/// </summary>
 	private void CheckScreenTouch()
 	{
 		if (Touchscreen.current.primaryTouch.press.isPressed)
@@ -58,6 +65,10 @@ public class BallHandler : MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// Instantiates a new ball object at the launcher position after a short delay
+	/// </summary>
+	/// <returns></returns>
 	private IEnumerator CreateNewBall()
 	{
 		yield return new WaitForSeconds(1);
@@ -67,6 +78,9 @@ public class BallHandler : MonoBehaviour
 		currentSpringJoint2D.connectedBody = launcherGameObject.GetComponent<Rigidbody2D>();
 	}
 
+	/// <summary>
+	/// Turns on gravity for the current ball object and clears the reference so that the player cannot drag or launch the same ball twice
+	/// </summary>
 	private void LaunchBall()
 	{
 		currentBallRigidBody2D.isKinematic = false;
