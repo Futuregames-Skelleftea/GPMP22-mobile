@@ -14,9 +14,20 @@ public class ScoreSystem : MonoBehaviour
 	{
 		car = FindObjectOfType<Car>();
 	}
+
 	private void FixedUpdate()
 	{
 		playerScore += car.Speed * scoreMultiplier * Time.fixedDeltaTime;
 		scoreText.text = Mathf.RoundToInt(playerScore).ToString();
+	}
+
+	public void AssignHighscore()
+	{
+		int currentHighscore = PlayerPrefs.GetInt("highscore");
+		if (currentHighscore < Mathf.RoundToInt(playerScore))
+		{
+			PlayerPrefs.SetInt("highscore", Mathf.RoundToInt(playerScore));
+		}
+
 	}
 }

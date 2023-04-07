@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
@@ -13,6 +14,7 @@ public class Car : MonoBehaviour
 	float steeringValue;
 	float screenMidValue;
 
+	public UnityEvent gameOverEvent;
 	private void Start()
 	{
 		screenMidValue = Screen.width / 2;
@@ -58,7 +60,8 @@ public class Car : MonoBehaviour
 	{
 		if (other.CompareTag("Obstacle"))
 		{
-			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+			gameOverEvent.Invoke();
+			SceneManager.LoadScene(0);
 		}
 	}
 }
