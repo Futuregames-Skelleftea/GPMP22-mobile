@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Car : MonoBehaviour
 {
-	[SerializeField] float speed;
+	public float Speed;
 	[SerializeField] float speedGainOverTime;
 	[SerializeField] float steeringSpeed;
 
@@ -46,12 +46,12 @@ public class Car : MonoBehaviour
 
 	private void AccelerateCar()
 	{
-		speed += speedGainOverTime * Time.deltaTime;
+		Speed += speedGainOverTime * Time.deltaTime;
 	}
 
 	private void MoveCar()
 	{
-		transform.Translate(Vector3.forward * speed * Time.deltaTime);
+		transform.Translate(Vector3.forward * Speed * Time.deltaTime);
 		transform.Rotate(0, steeringValue * steeringSpeed * Time.deltaTime, 0);
 	}
 	private void OnTriggerEnter(Collider other)
