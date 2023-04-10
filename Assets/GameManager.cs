@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
 					currentEnergy += addedEnergy;
 					if (currentEnergy < 5)
 					{
-						int notificationAddedSeconds = (currentEnergy - 5) * rechargeCDTime;
+						int notificationAddedSeconds = (5 - currentEnergy) * rechargeCDTime;
 						notificationHandler.ScheduleNotification(DateTime.UtcNow.AddSeconds(notificationAddedSeconds));
 					}
 				}
