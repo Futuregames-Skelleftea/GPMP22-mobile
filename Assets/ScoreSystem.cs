@@ -37,6 +37,5 @@ public class ScoreSystem : MonoBehaviour
 		{
 			PlayerPrefs.SetInt("highscore", Mathf.RoundToInt(playerScore));
 		}
-
 	}
 }

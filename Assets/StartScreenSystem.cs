@@ -12,7 +12,7 @@ public class StartScreenSystem : MonoBehaviour
     [SerializeField] TextMeshProUGUI highscoreText;
     [SerializeField] TextMeshProUGUI energyText;
 	[SerializeField] int maxEnergy;
-	[SerializeField] int energyRechargeTimeInSeconds;
+	public int energyRechargeTimeInSeconds;
 
 	private int currentEnergy;
 
