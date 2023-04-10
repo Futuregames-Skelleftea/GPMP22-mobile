@@ -5,6 +5,7 @@ using TMPro;
 
 public class ScoreSystem : MonoBehaviour
 {
+	const string HIGHSCORE = "highscore";
 	[SerializeField] TextMeshProUGUI scoreText;
 	[SerializeField] float scoreMultiplier;
 	float playerScore;
@@ -23,7 +24,7 @@ public class ScoreSystem : MonoBehaviour
 
 	public void AssignHighscore()
 	{
-		int currentHighscore = PlayerPrefs.GetInt("highscore");
+		int currentHighscore = PlayerPrefs.GetInt(HIGHSCORE);
 		if (currentHighscore < Mathf.RoundToInt(playerScore))
 		{
 			PlayerPrefs.SetInt("highscore", Mathf.RoundToInt(playerScore));
