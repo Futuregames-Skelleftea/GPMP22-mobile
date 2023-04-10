@@ -15,6 +15,8 @@ public class Car : MonoBehaviour
 	float screenMidValue;
 
 	public UnityEvent gameOverEvent;
+
+	bool atMaxSpeed;
 	private void Start()
 	{
 		screenMidValue = Screen.width / 2;
@@ -24,6 +26,11 @@ public class Car : MonoBehaviour
 		CheckPlayerTouch();
 		AccelerateCar();
 		MoveCar();
+	}
+
+	public void SetMaxSpeed()
+	{
+		atMaxSpeed = true;
 	}
 
 	private void CheckPlayerTouch()
@@ -48,7 +55,10 @@ public class Car : MonoBehaviour
 
 	private void AccelerateCar()
 	{
-		Speed += speedGainOverTime * Time.deltaTime;
+		if (!atMaxSpeed)
+		{
+			Speed += speedGainOverTime * Time.deltaTime;
+		}
 	}
 
 	private void MoveCar()

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Events;
 
 public class ScoreSystem : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class ScoreSystem : MonoBehaviour
 	[SerializeField] float scoreMultiplier;
 	float playerScore;
 	Car car;
+
+	bool maxSpeedReached;
 
 	private void Start()
 	{
@@ -20,6 +23,11 @@ public class ScoreSystem : MonoBehaviour
 	{
 		playerScore += car.Speed * scoreMultiplier * Time.fixedDeltaTime;
 		scoreText.text = Mathf.RoundToInt(playerScore).ToString();
+		if (!maxSpeedReached && playerScore > 5000)
+		{
+			maxSpeedReached = true;
+			car.SetMaxSpeed();
+		}
 	}
 
 	public void AssignHighscore()
