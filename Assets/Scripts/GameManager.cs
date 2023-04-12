@@ -11,35 +11,45 @@ public class GameManager : MonoBehaviour
     private int _score = 0;
     public int Score => _score;
 
-    //ui
-    [SerializeField] private TextMeshProUGUI ScoreDisplay;
-    [SerializeField] private TextMeshProUGUI LapDisplay;
 
 
 
-    void Start()
+    //gameplay ui
+    [SerializeField] private TextMeshProUGUI _scoreDisplay;
+    [SerializeField] private TextMeshProUGUI _lapDisplay;
+
+    //post-game ui
+    [SerializeField] private TextMeshProUGUI _endScoreDisplay;
+    [SerializeField] private TextMeshProUGUI _endLapDisplay;
+    [SerializeField] private GameObject _highScoreText;
+
+
+    public void OnCarCollision()
     {
+        int currHighScore = PlayerPrefs.GetInt("hiScore", 0);
 
+        if (_score > currHighScore)
+        {
+            PlayerPrefs.SetInt("hiScore", _score);
+            _highScoreText.SetActive(true);
+        }
+
+
+        _endLapDisplay.text = $"Laps: {Laps.ToString()}";
+        _endScoreDisplay.text = $"Score: {Score.ToString()}";
     }
 
-    void Update()
-    {
-
-    }
     public void PointIncrease(int points)
     {
-        Debug.Log("log");
         _score += points;
     }
     public void LapIncrease()
     {
-        Debug.Log("g");
-        if(Laps < 1) _laps--;
         _laps++;
     }
     public void UpdateUI()
     {
-        LapDisplay.text = Laps.ToString();
-        ScoreDisplay.text = Score.ToString();
+        _lapDisplay.text = $"Laps: {Laps.ToString()}";
+        _scoreDisplay.text = $"Score: {Score.ToString()}";
     }
 }

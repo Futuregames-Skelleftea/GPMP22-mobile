@@ -14,24 +14,20 @@ public class SlalomPointEvent : MonoBehaviour
     public UnityEvent<int> PointIncrease;
     public UnityEvent LapIncrease;
 
-    private void Awake()
-    {
-        _gate = GetComponent<BoxCollider>();
-    }
+    private void Awake() => _gate = GetComponent<BoxCollider>(); 
 
-    public void ActivateGate()
-    {
-        _gate.enabled = true;
-    }
+    //method for activating gate easily through unityevents
+    public void ActivateGate() => _gate.enabled = true;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
+            //events
             LapIncrease?.Invoke();
             PointIncrease?.Invoke(Points);
+            //disabling collider, keeping this gate from being triggered out of sync
             _gate.enabled = false;
-            Debug.Log(_gate.enabled);
         }
     }
 }
