@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 2560
     height: 1357
   m_ShowMode: 4
-  m_Title: Scene
+  m_Title: Hierarchy
   m_RootView: {fileID: 8}
   m_MinSize: {x: 875, y: 421}
   m_MaxSize: {x: 10000, y: 10000}
@@ -75,7 +75,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 43
+  controlID: 17
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 21
+  controlID: 95
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -120,8 +120,8 @@ MonoBehaviour:
     y: 0
     width: 605
     height: 1307
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -276,7 +276,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 42
+  controlID: 96
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -301,7 +301,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 28
+  controlID: 97
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -399,7 +399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c262c1329a02fa49b5cb4c297106f3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MinSize: {x: 133, y: 30}
+  m_MinSize: {x: 129, y: 28}
   m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
     m_Text: ProBuilder
@@ -456,22 +456,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/AssetPacks/PolygonWesternFrontier/Prefabs/Props
+    - Assets/Scripts/Player
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/AssetPacks/PolygonWesternFrontier/Prefabs/Props
+  - Assets/Scripts/Player
   m_LastFoldersGridSize: -1
   m_LastProjectPath: F:\Unity Stuff\Unity Projects\Simple Driver
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 35}
-    m_SelectedIDs: 4a660000
-    m_LastClickedID: 26186
-    m_ExpandedIDs: 00000000d865000004660000066600000c660000386600003a6600003c660000603b010000ca9a3bffffff7f
+    m_SelectedIDs: e06b0000
+    m_LastClickedID: 27616
+    m_ExpandedIDs: 000000008a6b0000b26b000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -499,7 +499,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000d8650000
+    m_ExpandedIDs: 000000008a6b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -551,7 +551,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 190}
+    m_ScrollPosition: {x: 0, y: 0}
     m_GridSize: 64
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 207
@@ -627,9 +627,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: 4cd2f9ffc8d2f9ffc0d8f9ffd0d8f9ff68cefaffced2faffecedfaff4eeefaff1af4faff24f4faffae87fbffec8cfbffd6a3fbff2ca8fbff8aa8fbffe0acfbff6cb1fbffcab1fbffe4b8fbff1cbdfbff7ebdfbff30c3fbff40c3fbffe6e9fbff62eafbff72f9fbffd60bfcff340cfcff040efcffea0efcff0013fcff6213fcff1419fcff2619fcff00bcfcff4214fdff901cfdff042dfdff4ae5fdff7ef1fdff621bfeffc81bfeff4a1cfeffb41cfeffcc27feff6c80feffeac4feff84cefeffb83bffff9c40ffff4c44ffff7efaffff10fbfffff4ffffff86610000bc6100001c6200007e6200005cd0000082d40000400b01005a0b0100fc36010074390100063b0100c03d02008c3f02004e41020026ff020046030300c6080300d4080300c64b03001a4c03006a4c0300da4c03008a4d0300ac4d0300ea4d0300
+      m_SelectedIDs: aa720000
+      m_LastClickedID: 29354
+      m_ExpandedIDs: 90eefffff4eeffffecf4fffffcf4ffff10fbffffd4750000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -911,9 +911,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 12.355431, y: 13.1626215, z: -11.221043}
+    m_Target: {x: -25.872568, y: 25.785748, z: 12.206537}
     speed: 2
-    m_Value: {x: 12.355431, y: 13.1626215, z: -11.221043}
+    m_Value: {x: -25.872568, y: 25.785748, z: 12.206537}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -960,9 +960,9 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.13609391, y: 0.14509508, z: -0.0224682, w: -0.98016137}
+    m_Target: {x: -0.35353622, y: 0.29489255, z: -0.12102281, w: -0.87988794}
     speed: 2
-    m_Value: {x: -0.13603982, y: 0.14503741, z: -0.02245927, w: -0.97977185}
+    m_Value: {x: -0.35353622, y: 0.29489255, z: -0.121022806, w: -0.87988794}
   m_Size:
     m_Target: 0.8660254
     speed: 2

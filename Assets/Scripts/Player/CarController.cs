@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class CarController : MonoBehaviour
 {
     [SerializeField] bool isSteering;
+    private int currentTouchId;     //the touch id of the touch that is currently controlling the car
     private Rigidbody carRigidbody;
 
     [SerializeField] float acceleration;
@@ -34,7 +35,7 @@ public class CarController : MonoBehaviour
     {
         if (Touchscreen.current.primaryTouch.press.isPressed)
         {
-            Vector2 touchPosition = Touchscreen.current.primaryTouch.position.ReadValue();   //gets the position of the touch
+            Vector2 touchPosition = Input.GetTouch(currentTouchId).position;   //gets the position of the touch
             float turnValue = Mathf.Lerp(-turnSpeedIncrements, turnSpeedIncrements, touchPosition.x / Screen.width);
             carRigidbody.AddTorque(carRigidbody.transform.up * turnValue * turnSpeed * Time.deltaTime);
         }
@@ -47,11 +48,19 @@ public class CarController : MonoBehaviour
     //called by the input event system to start the steering function
     public void StartSteering()
     {
+        for (int i = 0; i < Touchscreen.current.touches.Count; i++)
+        {
+            if(Touchscreen.current.touches[i].phase.valueSizeInBytes == 1)
+            {
+                currentTouchId = i;
+            }
+        }
         isSteering = true;
     }
 
     public void StopSteering()
     {
+        currentTouchId = 0;
         isSteering = false;
     }
 
