@@ -5,16 +5,23 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    //variables are set in the inspector
     [SerializeField] private float forceMagnitude;
     [SerializeField] private float maxVelocity;
     [SerializeField] private float rotationSpeed;
 
+    //Rigidbody of the player
     private Rigidbody _rB;
+
+    //Maincamera in the scene
     private Camera mainCam;
+
+    //The direction which the player move
     private Vector3 movementDir;
     // Start is called before the first frame update
     void Start()
     {
+        //Getting the reference of the maincamera and Rigidbody
         mainCam = Camera.main;
         _rB = GetComponent<Rigidbody>();
     }
@@ -22,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Calling Processinput, keepplayeronscreen and rotatetofacevelocity methods
         ProcessInput();
         KeepPlayerOnScreen();
         RotateToFaceVelocity();
@@ -29,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate() 
     {
+        //Applying force to player in the movement direction
         if(movementDir == Vector3.zero)
         {
             return;
@@ -36,18 +45,22 @@ public class PlayerMovement : MonoBehaviour
 
         _rB.AddForce(movementDir * forceMagnitude * Time.deltaTime, ForceMode.Force);
 
+        //Clamping the player velocity to the maximum velocity
         _rB.velocity = Vector3.ClampMagnitude(_rB.velocity, maxVelocity);
 
     }
 
     private void ProcessInput()
     {
+        //Getting touchs input
         if(Touchscreen.current.primaryTouch.press.isPressed)
         {
+            //Getting touch position in screenspace and convert it to worldspace
             Vector2 touchPosition = Touchscreen.current.primaryTouch.position.ReadValue();
 
             Vector3 worldPosition = mainCam.ScreenToWorldPoint(touchPosition);  
 
+            //Movement direction subtracting the players position from the touch position
             movementDir = transform.position - worldPosition;        
             movementDir.z = 0f;
             movementDir.Normalize();  
@@ -59,7 +72,8 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void KeepPlayerOnScreen()
-    {
+    {   
+        //Will keep the player on screen all the time
         Vector3 newPosition = transform.position;
         Vector3 viewportPosition = mainCam.WorldToViewportPoint(transform.position);
 
@@ -86,6 +100,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void RotateToFaceVelocity()
     {
+        //Rotating the player velocity to face right direction
         if(_rB.velocity == Vector3.zero)
         {
             return;
