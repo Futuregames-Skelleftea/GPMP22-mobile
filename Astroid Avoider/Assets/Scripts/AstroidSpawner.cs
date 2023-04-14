@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AstroidSpawner : MonoBehaviour
 {
+    // array with prefabs
     [SerializeField] private GameObject[] astroidPrefab;
     [SerializeField] private float secondsBetweenAstroids = 1.5f;
     [SerializeField] private Vector2 forceRange;
@@ -30,11 +31,14 @@ public class AstroidSpawner : MonoBehaviour
 
     private void SpawnAstroid()
     {
+        // Select a random side for the asteroid to spawn from
         int side = Random.Range(0, 4);
 
+        // Initialize spawnPoint and direction vectors to zero
         Vector2 spawnPoint = Vector2.zero;
         Vector2 direction = Vector2.zero;
 
+        // Depending on which side is selected, set the appropriate x and y values for spawnPoint and direction
         switch (side)
         {
             case 0:
@@ -63,11 +67,14 @@ public class AstroidSpawner : MonoBehaviour
                 break;
         }
 
+        // Convert the spawnPoint from viewport coordinates to world coordinates
         Vector3 worldSpawnPoint = mainCamera.ViewportToWorldPoint(spawnPoint);
         worldSpawnPoint.z = 0;
 
+        // Randomly select an asteroid prefab from the array of asteroid prefabs
         GameObject selectedAstroid = astroidPrefab[Random.Range(0, astroidPrefab.Length)];
 
+        // Instantiate the selected asteroid at the worldSpawnPoint with a random rotation
         GameObject astroidInstance = Instantiate(
             selectedAstroid, 
             worldSpawnPoint, 
@@ -75,6 +82,7 @@ public class AstroidSpawner : MonoBehaviour
 
         Rigidbody rb = astroidInstance.GetComponent<Rigidbody>();
 
+        // Set the velocity of the asteroid instance to the normalized direction vector multiplied by a random force in the forceRange
         rb.velocity = direction.normalized * Random.Range(forceRange.x, forceRange.y);
     }
 }
