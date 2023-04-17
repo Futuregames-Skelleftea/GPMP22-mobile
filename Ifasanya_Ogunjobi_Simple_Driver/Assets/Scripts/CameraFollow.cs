@@ -14,7 +14,7 @@ public class CameraFollow : MonoBehaviour
         
     }
 
-
+ //Adjust the position and rotation of camera for a smooth movement
     void FixedUpdate()
     {
         transform.position = Vector3.Lerp(transform.position, player.position, smothing);
