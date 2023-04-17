@@ -12,18 +12,6 @@ public class CarMovement : MonoBehaviour
 
     public float gravityMultiplier;
 
-
-
-
-
-
-
-
-
-
-
-
-
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -39,7 +27,7 @@ public class CarMovement : MonoBehaviour
         Fall();
 
     }
-
+ //Moving car forward and Backwards
     void Move()
     {
         if (Input.GetKey(KeyCode.W))
@@ -58,7 +46,7 @@ public class CarMovement : MonoBehaviour
 
         rb.velocity = transform.TransformDirection(localVelocity);
     }
-
+    // To turn car both left and right
     void Turn()
     {
         if (Input.GetKey(KeyCode.D))
@@ -71,7 +59,7 @@ public class CarMovement : MonoBehaviour
             rb.AddTorque(-Vector3.up * turnSpeed * 10);// Backward force should be less than the forward force
         }
     }
-
+//To adjuct the gravity of car on the plain
     void Fall()
     {
         rb.AddForce(Vector3.down * gravityMultiplier * 10);
