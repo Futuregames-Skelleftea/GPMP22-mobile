@@ -123,7 +123,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
 
         // Load scene MainMenu
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
 
     public static void GoToPlayScene()
@@ -132,6 +132,6 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
 
         // Load scene PlayLevel
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(1, LoadSceneMode.Single);
     }
 }
