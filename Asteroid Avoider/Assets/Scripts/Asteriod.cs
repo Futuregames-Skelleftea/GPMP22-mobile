@@ -17,7 +17,7 @@ public class Asteriod : MonoBehaviour
         pc = GetComponent<PolygonCollider2D>();
         sr = GetComponent<SpriteRenderer>();
     }
-
+// Setting the position of Asteriods
     public void kick(float astMass, Vector2 direction)
     {
 
@@ -39,6 +39,7 @@ public class Asteriod : MonoBehaviour
         rb.AddTorque(Random.Range(-4f, 4f));
     }
 
+// seperation asteriods from other game objects
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.tag == "Background")
@@ -63,6 +64,7 @@ public class Asteriod : MonoBehaviour
         }
     }
 
+//On hit with bullet split asteriods into two
     void split()
     {
 
