@@ -14,12 +14,14 @@ public class Bullet : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
+// Adding velocity to bullet
     public void shoot(Vector2 direction)
     {
 
         rb.velocity = direction.normalized * bulletSpeed;
     }
 
+// separating bullet from other game objects
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.tag == "Background")
