@@ -5,39 +5,17 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
 
+    [SerializeField] private GameObject[] asteroidPrefabs;
+    [SerializeField] private float spawnTime = 1.5f;
+    [SerializeField] private Vector2 forceRange;
 
-    public Asteriod asteriod;
-    public float spawnRate;
-    public float spawnDistance;
-    
+    // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("spawn", 0f, spawnRate);
+        
     }
 
-
-    void spawn()
-    {
-
-        Vector2 spawnPoint = Random.insideUnitCircle.normalized * spawnDistance;
-
-        float angle = Random.Range(-15f, 15f);
-
-        Quaternion rotation = Quaternion.AngleAxis(angle, new Vector3(0, 0, 1));
-
-        Asteriod myAsteriod = Instantiate(asteriod, spawnPoint, rotation);
-
-        Vector2 direction = rotation * -spawnPoint;
-        float mass = Random.Range(0.8f, 1.4f);
-        myAsteriod.kick(mass, direction);
-
-
-
-
-
-    }
-
-   
+    // Update is called once per frame
     void Update()
     {
         
