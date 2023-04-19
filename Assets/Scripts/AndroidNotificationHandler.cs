@@ -10,7 +10,9 @@ using Unity.Notifications.Android;
 public class AndroidNotificationHandler : MonoBehaviour
 {
 #if UNITY_ANDROID
-    private const string ChannelId = "notification_channel";
+    private const string ChannelId = "notification_channel";    //the channel id
+
+    //function that sends a notification about your energy being recharged at a set time
     public void ScheduleNotification(DateTime dateTime)
     {
         AndroidNotificationChannel notificationChannel = new AndroidNotificationChannel
@@ -32,7 +34,7 @@ public class AndroidNotificationHandler : MonoBehaviour
             FireTime = dateTime
         };
 
-        AndroidNotificationCenter.SendNotification(notification, ChannelId);
+        AndroidNotificationCenter.SendNotification(notification, ChannelId);    
     }
 #endif
 }

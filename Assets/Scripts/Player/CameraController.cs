@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// THIS SCRIPT IS NOT CURRENTLY USED
 public class CameraController : MonoBehaviour
 {
     public GameObject player;

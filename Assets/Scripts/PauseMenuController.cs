@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenuController : MonoBehaviour
 {
-    [SerializeField] GameObject pauseMenu;
+    [SerializeField] GameObject pauseMenu;  //the gameobject which contains the pause menu canvas 
+
     public void PauseGame()
     {
         Time.timeScale = 0;
