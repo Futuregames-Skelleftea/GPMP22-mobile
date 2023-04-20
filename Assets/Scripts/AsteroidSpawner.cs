@@ -15,19 +15,22 @@ public class AsteroidSpawner : MonoBehaviour
 
     private void Start()
     {
-        mainCamera = Camera.main;
-        StartCoroutine(SpawnAsteroids());
+        mainCamera = Camera.main;   //reference to the main camera
+        StartCoroutine(SpawnAsteroids());   //starts the spawning coroutine
     }
 
+    //coroutine which continously spawns asteroids 
     public IEnumerator SpawnAsteroids()
     {
+        //spawn as long as the cooldown isnt zero and the canSpawn variable is true
         while (asteroidCooldown != 0 && canSpawn)
         {
-            int side = Random.Range(0, 4);
+            int side = Random.Range(0, 4);  //picks a side to spawn from
 
             Vector2 spawnPoint = Vector2.zero;
             Vector2 direction = Vector2.zero;
 
+            //switch statement which creates a spawn viewport position and a corresponding direction
             switch (side)
             {
                 case 0:
@@ -56,18 +59,19 @@ public class AsteroidSpawner : MonoBehaviour
                     break;
             }
 
-            Vector3 worldSpawnPoint = mainCamera.ViewportToWorldPoint(spawnPoint);
-            worldSpawnPoint.z = 0;
+            Vector3 worldSpawnPoint = mainCamera.ViewportToWorldPoint(spawnPoint);  //transforms the viewport spawn position to a worldposition
+            worldSpawnPoint.z = 0;  //its a 2.5d game so making sure there is no depth value
 
-            GameObject asteroidToSpawn = asteroidPrefabs[Random.Range(0, asteroidPrefabs.Length)];
+            GameObject asteroidToSpawn = asteroidPrefabs[Random.Range(0, asteroidPrefabs.Length)];  //picks a random asteroid prefab
 
-            GameObject spawnedAsteroid = Instantiate(asteroidToSpawn, worldSpawnPoint,Quaternion.Euler(0,0,Random.Range(0,360)));
+            GameObject spawnedAsteroid = Instantiate(asteroidToSpawn, worldSpawnPoint,Quaternion.Euler(0,0,Random.Range(0,360)));   //spawns it with a random rotation
 
             spawnedAsteroid.GetComponent<Rigidbody>().velocity = direction.normalized * Random.Range(forceRange.x, forceRange.y);
 
             //sets the score controller reference on the individual asteroids so that they can add score if they get destroyed
             spawnedAsteroid.GetComponent<Asteroid>().scoreController = scoreController; 
 
+            //waits a set cooldown before spawning the next asteroid
             yield return new WaitForSeconds(asteroidCooldown);
         }
     }

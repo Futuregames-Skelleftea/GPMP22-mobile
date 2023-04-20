@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
+    //function called bu the play button
     public void StartGame()
     {
         SceneManager.LoadScene(1);
