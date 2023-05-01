@@ -33,10 +33,10 @@ public class ScoreWigdetController : MonoBehaviour
 
     public void WatchAdToContinue()
     {
-        ResumeGame();
+        AdManager.Instance.ShowAd(this);
     }
 
-    private void ResumeGame()
+    public void ResumeGame()
     {
         gameOverCanvas.gameObject.SetActive(false);
         isAlive = true;
