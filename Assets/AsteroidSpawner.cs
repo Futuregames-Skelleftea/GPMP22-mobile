@@ -66,7 +66,7 @@ public class AsteroidSpawner : MonoBehaviour
 		Destroy(spawnedAsteroid, asteroidSecondsAlive);
 	}
 
-	private IEnumerator AsteroidSpawnChain()
+	public IEnumerator AsteroidSpawnChain()
 	{
 		SpawnAsteroid();
 		float progress = 0;
